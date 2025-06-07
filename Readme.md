@@ -713,14 +713,13 @@ graph LR
 
 - ✅ **JWT Authentication** - Secure token-based auth
 - ✅ **Password Hashing** - bcrypt with salt rounds
-- ✅ **Input Validation** - Joi schema validation
 - ✅ **SQL Injection Prevention** - Mongoose ODM protection
 - ✅ **CORS Configuration** - Controlled cross-origin requests
 - ✅ **Rate Limiting** - Express rate limiter middleware
 - ✅ **HTTPS Enforcement** - NGINX SSL termination
 - ✅ **File Type Validation** - Whitelist allowed file types
 - ✅ **Access Control Lists** - Granular permissions
-- ✅ **Secure Headers** - Helmet.js security headers
+
 
 ### ACL Permission Matrix
 
@@ -734,16 +733,6 @@ graph LR
 | **Version Control** | ✅ | ❌ | ❌ | ❌ |
 
 *Public access only via share links
-
----
-
-Perfect — here's a **complete Docker Deployment section** for your `README.md` that includes:
-
-* ✅ A professional technical breakdown of services
-* 🗺️ A Mermaid diagram to show container interactions
-* 🧰 A `Makefile` to simplify Docker commands
-* 📦 All deployment info (dev and prod)
-* 🛑 Kubernetes references removed
 
 ---
 
