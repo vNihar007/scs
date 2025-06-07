@@ -1,5 +1,5 @@
 # 🚀 Simple Cloud Storage (SCS)
-### *A Production-Grade Amazon S3 Clone - Backend Engineering Capstone Project*
+### *A Production-Grade Object Storage System*
 
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-brightgreen.svg)](https://mongodb.com/)
@@ -27,16 +27,9 @@
 
 ## 🎯 Project Overview
 
-**Simple Cloud Storage (SCS)** is a comprehensive Amazon S3 clone built as a capstone project for the Backend Engineering Launchpad program. This project demonstrates deep understanding of distributed systems, cloud storage architecture, and modern backend development practices.
+**Simple Cloud Storage (SCS)** is a comprehensive Object Storage System built as a capstone project for the Backend Engineering Launchpad program. This project demonstrates deep understanding of distributed systems, cloud storage architecture, and modern backend development practices.
 
-### 🎓 **Educational Goals**
-- Master **distributed file storage** principles
-- Implement **scalable microservices** architecture  
-- Learn **cloud storage internals** (metadata, versioning, ACLs)
-- Practice **system design** for high-availability services
-- Build **production-ready** backend systems
-
-### 🌟 **Key Achievements**
+### 🌟 **Core Capabilities**
 - ✅ **Full S3 API Compatibility** - Upload, download, versioning, metadata
 - ✅ **Enterprise Security** - JWT auth, ACLs, encrypted storage
 - ✅ **Production Scalability** - Horizontal scaling, load balancing
