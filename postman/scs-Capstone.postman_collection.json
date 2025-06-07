@@ -1,0 +1,1034 @@
+{
+	"info": {
+		"_postman_id": "76b01bb0-c9e0-4c60-af74-6714adb10197",
+		"name": "scs-Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40469516"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"babu\",\n  \"email\": \"babu@sap.com\",\n  \"password\": \"jai!babu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/auth/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"nihar\",\n  \"password\": \"varun@123\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UPLOAD",
+			"item": [
+				{
+					"name": "Uplaod Multiple files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzkxODYsImV4cCI6MTc0OTQ4Mzk4Nn0.IRbdrddRnGrwGBUm-NT503JOroE4546zeAQ5XYepLLg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "postman-cloud:///1f03efa0-3968-4e70-8413-67a1b3c27ee1"
+								},
+								{
+									"key": "folder",
+									"value": "sample-folder",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "sample",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/upload/:bucketName/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"upload",
+								":bucketName",
+								"upload"
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FILES",
+			"item": [
+				{
+					"name": "List of all files of Bucket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDkxMjk0MzIsImV4cCI6MTc0OTczNDIzMn0.ptfrhoNrP69w5z_hdj4hBwbjvhaQITT1ZCZKzJx3vgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName"
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an single file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzkxODYsImV4cCI6MTc0OTQ4Mzk4Nn0.IRbdrddRnGrwGBUm-NT503JOroE4546zeAQ5XYepLLg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName/:file_id",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName",
+								":file_id"
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								},
+								{
+									"key": "file_id",
+									"value": "6842ef05aa576d7c125f09a2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search Files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzkxODYsImV4cCI6MTc0OTQ4Mzk4Nn0.IRbdrddRnGrwGBUm-NT503JOroE4546zeAQ5XYepLLg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName/search/query?name=version_test.txt&tags=test",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName",
+								"search",
+								"query"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "version_test.txt"
+								},
+								{
+									"key": "tags",
+									"value": "test"
+								}
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LINKS",
+			"item": [
+				{
+					"name": "generate an public shareable Link of file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzU4OTIsImV4cCI6MTc0OTQ4MDY5Mn0.dSyBHpRp-QCVhy7HBqmMaPWzLxBR78g-nrycxEMqSrs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"expiresInMinutes\": 60\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/link/:id/:bucketName/share",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"link",
+								":id",
+								":bucketName",
+								"share"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6841c91f602f1d7b1d5481da"
+								},
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download the file using the public link",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/link/:token/:bucketName",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"link",
+								":token",
+								":bucketName"
+							],
+							"variable": [
+								{
+									"key": "token",
+									"value": "42de736d-45b8-4dc8-818a-7641cc9ba875"
+								},
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BUCKETS",
+			"item": [
+				{
+					"name": "Create Bucket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzU4OTIsImV4cCI6MTc0OTQ4MDY5Mn0.dSyBHpRp-QCVhy7HBqmMaPWzLxBR78g-nrycxEMqSrs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"new_bucket\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/bucket/buckets",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"bucket",
+								"buckets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of Buckets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzU4OTIsImV4cCI6MTc0OTQ4MDY5Mn0.dSyBHpRp-QCVhy7HBqmMaPWzLxBR78g-nrycxEMqSrs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8433/api/bucket/buckets",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8433",
+							"path": [
+								"api",
+								"bucket",
+								"buckets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Objects_in_Buckets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzU4OTIsImV4cCI6MTc0OTQ4MDY5Mn0.dSyBHpRp-QCVhy7HBqmMaPWzLxBR78g-nrycxEMqSrs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/bucket/buckets/:bucketName/objects/?folder=Version-test&tags=test",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"bucket",
+								"buckets",
+								":bucketName",
+								"objects",
+								""
+							],
+							"query": [
+								{
+									"key": "folder",
+									"value": "Version-test"
+								},
+								{
+									"key": "tags",
+									"value": "test"
+								}
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ACL",
+			"item": [
+				{
+					"name": "Give Permissions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg5NTIwNzksImV4cCI6MTc0OTU1Njg3OX0.xqbiGCrXDVhEk-aQCfzbp2LvlN3R8gNgdOrB5PSgtPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userIds\": [\"683ee3f6d92aeb43dacc2a21\",\"683ee3dcd92aeb43dacc2a1e\",\"683ee3d3d92aeb43dacc2a1b\",\"683ee3bed92aeb43dacc2a18\",\"683ee3afd92aeb43dacc2a15\",\"683ee382d92aeb43dacc2a12\",\"683ee374d92aeb43dacc2a0f\",\"683ee360d92aeb43dacc2a0c\"],\n  \"permission\": \"write\",\n  \"expiresInMinutes\": 250000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName/:id/share",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName",
+								":id",
+								"share"
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "example"
+								},
+								{
+									"key": "id",
+									"value": "6841e2361270d1ad9672d088"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register ACL Owner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg5NTIwNzksImV4cCI6MTc0OTU1Njg3OX0.xqbiGCrXDVhEk-aQCfzbp2LvlN3R8gNgdOrB5PSgtPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceId\": \"6841e2361270d1ad9672d088\",\n  \"resourceType\": \"file\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/acl/assign-owner",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"acl",
+								"assign-owner"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DOWNLOADS",
+			"item": [
+				{
+					"name": "Download single file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDkxMjk0MzIsImV4cCI6MTc0OTczNDIzMn0.ptfrhoNrP69w5z_hdj4hBwbjvhaQITT1ZCZKzJx3vgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName/:file_id/download",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName",
+								":file_id",
+								"download"
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								},
+								{
+									"key": "file_id",
+									"value": "6841b51999074e7891e38b39"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Download",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDkxMjk0MzIsImV4cCI6MTc0OTczNDIzMn0.ptfrhoNrP69w5z_hdj4hBwbjvhaQITT1ZCZKzJx3vgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fileIds\": [\n    \"6841989299074e7891e38b2e\",\n    \"6841b51999074e7891e38b39\"\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName/download/bulk",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName",
+								"download",
+								"bulk"
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download by Version Label",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzkxODYsImV4cCI6MTc0OTQ4Mzk4Nn0.IRbdrddRnGrwGBUm-NT503JOroE4546zeAQ5XYepLLg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName/:filename/version/:versionLabel/download?folder=Version-test",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName",
+								":filename",
+								"version",
+								":versionLabel",
+								"download"
+							],
+							"query": [
+								{
+									"key": "folder",
+									"value": "Version-test"
+								}
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								},
+								{
+									"key": "filename",
+									"value": "version_test.txt"
+								},
+								{
+									"key": "versionLabel",
+									"value": "v2",
+									"description": "There are 2 version for the file(v1,v2)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FILE-VERSIONS",
+			"item": [
+				{
+					"name": "file-versions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzkxODYsImV4cCI6MTc0OTQ4Mzk4Nn0.IRbdrddRnGrwGBUm-NT503JOroE4546zeAQ5XYepLLg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName/versions/:filename?folder=sample_folder",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName",
+								"versions",
+								":filename"
+							],
+							"query": [
+								{
+									"key": "folder",
+									"value": "sample_folder"
+								}
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								},
+								{
+									"key": "filename",
+									"value": "doc_pods.txt"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rollback to version",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDg4NzkxODYsImV4cCI6MTc0OTQ4Mzk4Nn0.IRbdrddRnGrwGBUm-NT503JOroE4546zeAQ5XYepLLg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/files/:bucketName/:filename/version/:versionLabel/rollback?folder=sample_folder",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"files",
+								":bucketName",
+								":filename",
+								"version",
+								":versionLabel",
+								"rollback"
+							],
+							"query": [
+								{
+									"key": "folder",
+									"value": "sample_folder"
+								}
+							],
+							"variable": [
+								{
+									"key": "bucketName",
+									"value": "sample_bucket"
+								},
+								{
+									"key": "filename",
+									"value": "doc_pods.txt"
+								},
+								{
+									"key": "versionLabel",
+									"value": "v1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HEALTH CHECK PM2",
+			"item": [
+				{
+					"name": "health check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/health",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ANALYTICS",
+			"item": [
+				{
+					"name": "Storage",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDkxMjk0MzIsImV4cCI6MTc0OTczNDIzMn0.ptfrhoNrP69w5z_hdj4hBwbjvhaQITT1ZCZKzJx3vgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/analytics/storage",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"analytics",
+								"storage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDkxMjk0MzIsImV4cCI6MTc0OTczNDIzMn0.ptfrhoNrP69w5z_hdj4hBwbjvhaQITT1ZCZKzJx3vgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/analytics/activity",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"analytics",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Performance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDkxMjk0MzIsImV4cCI6MTc0OTczNDIzMn0.ptfrhoNrP69w5z_hdj4hBwbjvhaQITT1ZCZKzJx3vgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/analytics/performance",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"analytics",
+								"performance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reports",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODNkYmE2MTRiMWEzYWZkNzgyZWM2NzEiLCJpYXQiOjE3NDkxMjk0MzIsImV4cCI6MTc0OTczNDIzMn0.ptfrhoNrP69w5z_hdj4hBwbjvhaQITT1ZCZKzJx3vgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/analytics/reports",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"analytics",
+								"reports"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
