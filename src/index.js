@@ -6,7 +6,10 @@ const {startConsumer} = require('../src/utlis/kafka/Consumer'); // Kafka Consume
 const app = express()
 app.use(express.json())
 bloomInit();
-startConsumer();
+
+if (process.env.NODE_ENV !== 'test') {
+    startConsumer();
+}
 
 const PORT = process.env.PORT || 3000;
 const MONGOOSE_URI = process.env.MONGOOSE_URI;
@@ -21,6 +24,12 @@ mongoose.connect(MONGOOSE_URI)
     console.error("Mongoose Connection failed",err)
 })
 
+if (process.env.NODE_ENV !== 'test') {
+    mongoose.connect(MONGOOSE_URI)
+      .then(() => console.log("Mongoose connected"))
+      .catch(err => console.error("Mongo error", err));
+  }
+
 
 //imports 
 const authRoutes = require('../src/routes/auth');
@@ -29,6 +38,7 @@ const fileRoutes = require('../src/routes/files');
 const LinkRoutes = require('../src/routes/Link');
 const bucketRoutes = require('../src/routes/buckets');
 const aclRoutes = require('../src/routes/aclRoutes');
+const analyticsRoutes = require('../src/routes/analytics');
 
 // Routes 
 app.get('/',(req,res)=>{
@@ -44,4 +54,7 @@ app.use('/api/files',fileRoutes);
 app.use('/api/link',LinkRoutes);
 app.use('/api/bucket',bucketRoutes);
 app.use('/api/acl',aclRoutes);
+app.use('/api/analytics',analyticsRoutes);
 
+
+module.exports = app;

@@ -1,4 +1,5 @@
 const ObjectMeta = require('../models/objectMeta');
+const ActivityLog = require('../models/activityLog');
 const {bloomCheck,bloomAdd,bloomInit} = require('../utlis/bloomFilter');
 const {uploadToSeaweed} = require('../utlis/uploadToSeaweed');
 const {produceEvent} = require('../utlis/kafka/ProduceEvent');
@@ -77,7 +78,14 @@ const uploadFiles = async (req, res) => {
       });
 
       await meta.save();
-
+      // loging User Activity 
+      await ActivityLog.create({
+        user: req.user._id,
+        action: 'upload',
+        filename: file.originalname,
+        size: file.size
+      });
+    
       // adding bloom for successful db insert
       await bloomAdd(hash);
 

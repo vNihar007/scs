@@ -2,6 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 const SharedLink = require('../models/SharedLink');
 const objectMeta = require('../models/objectMeta');
+const ActivityLog = require('../models/activityLog');
 const {produceEvent} = require('../utlis/kafka/ProduceEvent');
 const axios = require('axios');
 
@@ -26,6 +27,13 @@ const generatePublicLink = async (req, res) => {
       token,
       expiresAt,
     });
+
+    await ActivityLog.create({
+      user: req.user._id,
+      action: 'share',
+      filename: file.filename
+    });
+    
 
     await produceEvent('file-events',{
       event:'share_link_created',

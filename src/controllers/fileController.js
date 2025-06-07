@@ -1,4 +1,5 @@
 const objectMeta = require('../models/objectMeta');
+const ActivityLog = require('../models/activityLog');
 const ACL = require('../models/acl');
 const fs = require('fs');
 const path = require('path');
@@ -58,6 +59,12 @@ const DownloadFiles = async (req, res) => {
             seaweedStatus:response.status
           })
         }
+        await ActivityLog.create({
+          user: req.user._id,
+          action: 'download',
+          filename: file.filename,
+          size: file.size
+        });
         const contentType = response.headers?.['content-type'] || 'application/octet-stream';
         res.setHeader('Content-Disposition', `attachment; filename="${file.filename}"`);
         res.setHeader('Content-Type', contentType);
@@ -82,6 +89,15 @@ const DownloadMultipleFiles = async (req, res) => {
             owner: req.user._id,
             bucket: bucketName
         });
+
+        for (const file of files){
+          await ActivityLog.create({
+            user: req.user._id,
+            action: 'download',
+            filename: file.filename,
+            size: file.size
+          });
+        }
 
         if (files.length !== fileIds.length || files.length === 0) {
             return res.status(404).json({ message: " files not found" });
@@ -126,6 +142,12 @@ const DeleteFile = async (req, res) => {
         await axios.delete(`${SEAWEED_FILER}${seaweedPath}`);
         //  Delete the metadata 
         await file.deleteOne({_id:file._id});
+        await ActivityLog.create({
+          user: req.user._id,
+          action: 'delete',
+          filename: file.filename,
+          size: file.size
+        });        
         await produceEvent('file-events',{
           event:'delete',
           filename:file.filename,
@@ -242,7 +264,7 @@ const DownloadByVersionLabel = async (req, res) => {
     }
   };
   
-  const RollBackVersion = async (req, res) => {
+const RollBackVersion = async (req, res) => {
     try {
       const { filename, versionLabel, bucketName } = req.params;
       const folder = req.query.folder || '';

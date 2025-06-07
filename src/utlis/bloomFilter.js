@@ -1,4 +1,4 @@
-const redis = require('../utlis/redis');
+const {redis} = require('../utlis/redis');
 
 // Redis  Bloom key 
 const BLOOM_KEY  = 'file_hash_bloom';

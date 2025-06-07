@@ -11,6 +11,6 @@ const {
 
 router.post('/buckets', verifyToken, createBucket);
 router.get('/buckets', verifyToken, listBuckets);
-router.get('/buckets/:name/objects', verifyToken, authorizeFileAccess('read'), ObjectsInBucket);
+router.get('/buckets/:bucketName/objects', verifyToken,authorizeFileAccess('read'), ObjectsInBucket);
 
 module.exports = router;

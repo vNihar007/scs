@@ -53,19 +53,19 @@ const listBuckets = async(req,res)=>{
 
 const ObjectsInBucket = async(req,res)=>{
     try{
-        const {name} = req.params; 
+        const {bucketName} = req.params; 
         const {folder='',tags=''} = req.query
 
         const bucket = await Bucket.findOne({
-            owner: req.user._id,
-            name
+            owner:req.user._id,
+            name:bucketName
         })
         if(!bucket){
             return res.status(404).json({message:"Bucket not Found"});
         }
         const query = {
             owner: req.user._id,
-            bucket:name,
+            bucket:bucketName,
             folder,
         };  
         if(tags){
@@ -73,7 +73,7 @@ const ObjectsInBucket = async(req,res)=>{
             query.tags = {$in:tagArray}
         }
         const files = await ObjectMeta.find(query).sort({createdAt:-1})
-        return res.status(200).json({ bucket: name, total: files.length, files });
+        return res.status(200).json({ bucket: bucketName, total: files.length, files });
     }catch(error){
         console.error(error);
         return res.status(500).json({message:"Unable to retrive files from Bucket"});
